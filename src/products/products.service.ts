@@ -48,7 +48,7 @@ export class ProductsService {
 
   findByProvider(id: string){
     const productsFound = this.products.filter((product)=> product.provider === id);
-    if(!productsFound) throw new NotFoundException();
+    if(productsFound.length === 0) throw new NotFoundException();
     return productsFound;
   }
 
