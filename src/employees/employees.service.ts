@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
-import {v3 as uuidv4} from "uuid";
+import {v4 as uuid} from "uuid";
 
 @Injectable()
 export class EmployeesService {
@@ -58,7 +58,5 @@ export class EmployeesService {
 
 
 
-function uuid(): string {
-  throw new Error('Function not implemented.');
-}
+
 

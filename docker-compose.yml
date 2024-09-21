@@ -7,7 +7,7 @@ services:
     restart: always
     ports:
       - '5432:5432'
-    enviroment:
+    environment:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
     container_name: ocso_db
