@@ -32,7 +32,6 @@ export class ProductsService {
     return this.productRepository.findBy({
       provider: {
         providerId: id,
-
       }
     })
   }
