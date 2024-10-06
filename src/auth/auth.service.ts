@@ -21,11 +21,14 @@ export class AuthService {
         userEmail: LoginUserDto.userEmail
       }
     })
-    const match = await bcrypt.compare(LoginUserDto.userPassword, user.userPassword)
+    const match = await bcrypt.compare(
+      LoginUserDto.userPassword, user.userPassword);
+
     if (!match) return new UnauthorizedException("No estas autorizado");
     const payload ={
-      user: user.userEmail,
-      password: user.userPassword
+      userEmail: user.userEmail,
+        userPassword: user.userPassword,
+        userRoles: user.userRoles
     }
     const token = this.jwtService.sign(payload);
     return token;
