@@ -5,7 +5,9 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 export class Provider {
     @PrimaryGeneratedColumn('uuid')
     providerId: string;
-    @Column('text')
+    @Column('text',{
+        unique: true,
+})
     providerName: string;
     @Column('text')
     providerEmail: string;
