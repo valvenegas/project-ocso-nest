@@ -5,6 +5,7 @@ import { UpdateEmployeeDto } from './dto/update-employee.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { ROLES } from 'src/auth/constants/roles.constants';
+import { get } from 'http';
 
 @Controller('employees')
 export class EmployeesController {
@@ -35,6 +36,13 @@ export class EmployeesController {
     @Param('id', new ParseUUIDPipe({version: '4'})) 
     id: string) {
     return this.employeesService.findOne(id);
+  }
+
+
+  @Auth(ROLES.MANAGER)
+  @Get('/location/:id')
+  findAllLocation(@Param ('id')id: string){
+    return this.employeesService.findByLocation(+id);
   }
 
   @Auth(ROLES.EMPLOYEE)
