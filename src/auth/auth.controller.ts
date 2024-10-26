@@ -17,7 +17,8 @@ export class AuthController {
 
   @Post("login")
   login(@Body() LoginUserDto: LoginUserDto){
-    this.authService.loginUser(LoginUserDto)
+  
+    return this.authService.loginUser(LoginUserDto)
   }
 
   @Patch("/:email")

@@ -19,11 +19,13 @@ export class AuthService {
     return this.userRepository.save(createUserDto)
   }
   async loginUser(LoginUserDto: LoginUserDto) {
+    
     const user = await this.userRepository.findOne({
       where: {
         userEmail: LoginUserDto.userEmail
       }
     })
+    if(!user)throw new UnauthorizedException("No estas autorizado")
     const match = await bcrypt.compare(
       LoginUserDto.userPassword, user.userPassword);
 
