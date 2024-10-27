@@ -17,7 +17,7 @@ import {
       let token = this.extractTokenFromHeader(request);
       if (!token) {
         token = request.cookies?.token;
-        throw new UnauthorizedException();
+        if(!token)throw new UnauthorizedException();
       }
       try {
         const payload = await this.jwtService.verifyAsync(
